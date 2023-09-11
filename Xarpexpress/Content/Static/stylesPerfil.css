@@ -1,0 +1,175 @@
+﻿/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+/* Contenedor principal */
+/* Contenedor principal */
+.container {
+    margin-top: 100px; /* Ajusta el valor según tus necesidades */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Perfil */
+.profile {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+   
+}
+
+    .profile h2 {
+        margin-bottom: 10px;
+    }
+
+    .profile ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .profile li {
+        margin-bottom: 5px;
+    }
+
+    .profile button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+
+/* Historial de pedidos */
+.order-history {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+    .order-history h2 {
+        margin-bottom: 10px;
+    }
+
+    .order-history table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .order-history th,
+    .order-history td {
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .order-history th {
+        background-color: #f0f0f0;
+    }
+
+.direccionesTable {
+    width: 300px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    border-right: 1px solid #ddd;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.expand-icon {
+    display: inline-block;
+    margin-top: 4px;
+    float: right;
+    transform: rotate(-90deg);
+    transition: transform 0.3s;
+    color: black;
+    cursor: pointer;
+}
+
+.expand-button {
+    display: inline-block;
+    margin-left: 4px;
+    padding: 4px 8px;
+    background-color: #171717;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ddd;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+
+tr.expanded .expand-icon {
+    transform: rotate(0deg);
+}
+
+.expand-content {
+    display: none;
+}
+
+tr.expanded + .expand-content {
+    display: table-row;
+}
+
+
+/* Estilos responsive */
+@media (max-width: 750px) {
+    .container {
+        margin: 100px 10px 0 10px;
+    }
+
+    .profile button {
+        margin-top: 10px;
+    }
+
+    .order-history table {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 630px) {
+    .container {
+        margin: 100px 5px 0 5px;
+    }
+
+    .profile ul {
+        padding-left: 10px;
+    }
+
+    .order-history table {
+        font-size: 12px;
+    }
+}

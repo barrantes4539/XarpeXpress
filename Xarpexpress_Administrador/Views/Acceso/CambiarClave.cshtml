@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" type="text/css" href="../../Content/Static/auth.css">
+</head>
+<body>
+    <form class="auth-form" action="@Url.Action("CambiarClave", "Acceso")" method="post">
+        <h2 id="heading">Cambiar contraseña</h2>
+
+        <input class="input-field-auth" type="text" value="@TempData["IdUsuario"]" style="width: 100%; text-align: left" name="idusuario">
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M14 6V4c0-2.21-1.79-4-4-4S6 1.79 6 4v2H4c-1.11 0-2 .89-2 2v8c0 1.11.89 2 2 2h8c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-2zm-4-4c1.18 0 2 1.35 2 2v2H4V4c0-.65.47-1.16 1-1.25V2c0-1.1.9-2 2-2zM8 12c-1.54 0-2.79-1.46-2.97-3.33L5 8V6h6v2l-.03.67C10.79 10.54 9.54 12 8 12zm4-3.33C10.79 10.54 9.54 12 8 12s-2.79-1.46-3.03-3.33L5 8h6l.03.67z"></path>
+            </svg>
+            <input placeholder="Contraseña actual" class="input-field-auth" type="password" name="claveactual" value="@ViewData["vclave"]">
+        </div>
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M14 6V4c0-2.21-1.79-4-4-4S6 1.79 6 4v2H4c-1.11 0-2 .89-2 2v8c0 1.11.89 2 2 2h8c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-2zm-4-4c1.18 0 2 1.35 2 2v2H4V4c0-.65.47-1.16 1-1.25V2c0-1.1.9-2 2-2zM8 12c-1.54 0-2.79-1.46-2.97-3.33L5 8V6h6v2l-.03.67C10.79 10.54 9.54 12 8 12zm4-3.33C10.79 10.54 9.54 12 8 12s-2.79-1.46-3.03-3.33L5 8h6l.03.67z"></path>
+            </svg>
+            <input placeholder="Nueva contraseña" class="input-field-auth" type="password" name="nuevaclave">
+        </div>
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M14 6V4c0-2.21-1.79-4-4-4S6 1.79 6 4v2H4c-1.11 0-2 .89-2 2v8c0 1.11.89 2 2 2h8c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-2zm-4-4c1.18 0 2 1.35 2 2v2H4V4c0-.65.47-1.16 1-1.25V2c0-1.1.9-2 2-2zM8 12c-1.54 0-2.79-1.46-2.97-3.33L5 8V6h6v2l-.03.67C10.79 10.54 9.54 12 8 12zm4-3.33C10.79 10.54 9.54 12 8 12s-2.79-1.46-3.03-3.33L5 8h6l.03.67z"></path>
+            </svg>
+            <input placeholder="Confirmar nueva contraseña" class="input-field-auth" type="password" name="confirmarclave">
+        </div>
+
+        @{
+            if (ViewBag.Error != null)
+            {
+                <div class="field-auth">
+                    <div class="forgot-password mt-auto">
+                        @ViewBag.Error
+                    </div>
+                </div>
+            }
+        }
+
+
+        <div class="btn">
+            <button class="btnRegistrar-auth" type="submit">Cambiar contraseña</button>
+        </div>
+        <div class="forgot-password mt-auto">
+            <a style="color: white" href="@Url.Action("Index", "Acceso")">Volver</a>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Valoraciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Valoraciones de Bebidas</title>
+    <link rel="stylesheet" href="../../Content/Static/stylesValoraciones.css">
+</head>
+<body>
+
+
+    <div class="container-valoraciones">
+        <form>
+            <label for="product">Bebida:</label>
+            <select id="product" name="product">
+                <option value="1">Xarpe</option>
+                <option value="2">Daiquiri de piña</option>
+                <option value="3">Imperial</option>
+                <!-- Otras opciones de bebidas -->
+            </select>
+
+            <label for="comment">Comentario:</label>
+            <textarea id="comment" name="comment" placeholder="Escribe tu comentario aquí"></textarea>
+
+            <input type="submit" value="Enviar Valoración">
+        </form>
+
+        <div class="review">
+            <h3>Xarpe</h3>
+            <p>¡Me encantó esta bebida! Tenía un sabor único y refrescante.</p>
+        </div>
+
+        <div class="review">
+            <h3>Daiquiri de piña</h3>
+            <p>No me gustó mucho esta bebida. Tenía un sabor extraño.</p>
+        </div>
+
+        <!-- Otras valoraciones -->
+    </div>
+</body>
+</html>
+
+

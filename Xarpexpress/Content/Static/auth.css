@@ -1,0 +1,162 @@
+﻿.auth-form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 2em;
+    background-color: #171717;
+    border-radius: 25px;
+    transition: .4s ease-in-out;
+    max-width: 400px;
+}
+
+    .auth-form:hover {
+        transform: scale(1.05);
+        border: 1px solid black;
+    }
+
+#heading {
+    text-align: center;
+    margin: 2em;
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+}
+
+.field-auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    border-radius: 25px;
+    padding: 0.6em;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #171717;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+    width: 100%;
+}
+
+.input-icon-auth {
+    height: 1.3em;
+    width: 1.3em;
+    fill: white;
+}
+
+.input-field-auth {
+    background: none;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    color: #d3d3d3;
+}
+
+.auth-form .btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 2.5em;
+    align-items: center;
+}
+
+.btnIngresar-auth {
+    padding: 0.5em 1.1em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-color: #252525;
+    color: white;
+}
+
+    .btnIngresar-auth:hover {
+        background-color: black;
+        color: white;
+    }
+
+.btnRegistrar-auth {
+    padding: 0.5em 2.3em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-color: #252525;
+    color: white;
+}
+
+    .btnRegistrar-auth:hover {
+        background-color: black;
+        color: white;
+    }
+
+.btnCambiarClave-auth {
+    padding: 0.5em 2.3em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-color: #252525;
+    color: white;
+}
+
+    .btnCambiarClave-auth:hover {
+        background-color: black;
+        color: white;
+    }
+/* Estilos adicionales para el div de regulaciones */
+.password-regulations {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #171717;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: #ffffff; /* Cambiamos el color del texto a blanco */
+}
+
+.regulation-check {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #ffffff; /* Cambiamos el color del texto a blanco */
+}
+
+    .regulation-check span {
+        font-size: 0.9em;
+    }
+
+    .regulation-check .checkmark {
+        color: #00ff00; /* Cambiamos el color de la marca de verificación a verde */
+        height: 1em;
+        width: 1em;
+    }
+
+    .regulation-check .crossmark {
+        color: #ff0000; /* Cambiamos el color de la cruz a rojo */
+        height: 1em;
+        width: 1em;
+    }
+
+@media screen and (max-width: 768px) {
+    .auth-form {
+        margin-top: 30vh;
+        padding: 1em;
+    }
+        .auth-form .btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1em;
+            margin-top: 2.5em;
+        }
+}
+
+@media screen and (orientation: landscape) {
+    .auth-form {
+        margin-top: 40vh;
+    }
+}

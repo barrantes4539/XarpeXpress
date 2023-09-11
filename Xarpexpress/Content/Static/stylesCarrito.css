@@ -1,0 +1,203 @@
+﻿/* stylesCarrito.css */
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 80px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+thead th,
+tbody td {
+    padding: 10px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+thead th {
+    background-color: #333;
+    color: #fff;
+    white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilos responsive */
+@media (max-width: 750px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        min-width: 150px;
+    }
+
+    thead,
+    tbody,
+    tr,
+    th,
+    td {
+        display: block;
+    }
+
+    tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        text-align: left;
+    }
+
+    tbody td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
+@media (max-width: 630px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    th,
+    td {
+        text-align: center;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody td {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        tbody td:before {
+            content: attr(data-label);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        tbody td:last-child {
+            margin-top: 10px;
+        }
+
+    input[type="number"] {
+        width: 50px;
+    }
+
+    .cart-summary {
+        margin-top: 20px;
+    }
+}
+
+/* Estilos novedosos */
+.container {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+thead th {
+    padding: 10px;
+    white-space: normal;
+}
+
+tbody td {
+    padding: 15px;
+    vertical-align: middle;
+}
+
+    tbody td img {
+        max-width: 50px;
+        height: auto;
+    }
+
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #555;
+    }
+
+    button.remove {
+        background-color: #f44336;
+    }
+
+        button.remove:hover {
+            background-color: #d32f2f;
+        }
+
+/* Utilizar más el ancho de la página */
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+@media (max-width: 750px) {
+    .container {
+        padding: 10px;
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 480px) and (orientation: landscape) {
+    thead th {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}

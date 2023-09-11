@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "IndexAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<main>
+    <main>
+        <section class="row" aria-labelledby="adminTitle">
+            <h1 id="adminTitle">Página de Administrador</h1>
+            <p class="lead">Bienvenido al panel de administración. Aquí encontrarás información vital y herramientas para gestionar el sistema.</p>
+        </section>
+
+        <div class="row">
+            <section class="col-md-6" aria-labelledby="dashboardTitle">
+                <h2 id="dashboardTitle">Dashboard</h2>
+                <p>El dashboard proporciona una visión general del sistema, incluyendo estadísticas, gráficos y datos relevantes.</p>
+                <p><a class="btn btn-outline-dark" href="/admin/dashboard">Ir al Dashboard &raquo;</a></p>
+            </section>
+            <section class="col-md-6" aria-labelledby="usersTitle">
+                <h2 id="usersTitle">Usuarios</h2>
+                <p>Administra los usuarios del sistema, incluyendo su registro, roles, permisos y otra información relevante.</p>
+                <p><a class="btn btn-outline-dark" href="/admin/users">Administrar Usuarios &raquo;</a></p>
+            </section>
+            <div class="row">
+                <section class="col-md-6" aria-labelledby="productsTitle">
+                    <h2 id="productsTitle">Productos</h2>
+                    <p>Gestiona los productos del sistema, incluyendo su creación, edición, eliminación y otros detalles relevantes.</p>
+                    <p><a class="btn btn-outline-dark" href="/admin/products">Administrar Productos &raquo;</a></p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+</main>
+

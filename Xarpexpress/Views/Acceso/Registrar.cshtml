@@ -1,0 +1,103 @@
+﻿@model Entity.Cliente
+@{
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" type="text/css" href="../../Content/Static/auth.css">
+</head>
+<body>
+    <form class="auth-form" action="@Url.Action("Registrar", "Acceso")" method="post">
+        <h2 id="heading">Crear una cuenta</h2>
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <text x="0" y="14" fill="white">A</text>
+            </svg>
+            @Html.TextBoxFor(m => m.Nombres, new { @class = "field-auth", id = "txtnombre", @placeholder = "Ingrese su nombre", value = ViewData["Nombres"] })
+
+        </div>
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <text x="0" y="14" fill="white">Ae</text>
+            </svg>
+            @Html.TextBoxFor(m => m.Apellidos, new { @class = "field-auth", id = "txtapellidos", @placeholder = "Ingrese sus apellidos", value = ViewData["Apellidos"] })
+        </div>
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 11.498c-.276 0-.5-.224-.5-.5V8.678c0-.276.224-.5.5-.5s.5.224.5.5v2.32c0 .276-.224.5-.5.5zm.5-8c-3.033 0-5.5 2.467-5.5 5.5s2.467 5.5 5.5 5.5 5.5-2.467 5.5-5.5-2.467-5.5-5.5-5.5zm0 10c-2.485 0-4.5-2.015-4.5-4.5S6.015 4.5 8 4.5s4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5zm0-1c1.93 0 3.5-1.57 3.5-3.5S9.93 2.5 8 2.5 4.5 4.07 4.5 6s1.57 3.5 3.5 3.5z"></path>
+            </svg>
+            @Html.TextBoxFor(m => m.Correo, new { @class = "field-auth", id = "txtcorreo", @placeholder = "Ingrese su correo electrónico", value = ViewData["Correo"] })
+        </div>
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M14 6V4c0-2.21-1.79-4-4-4S6 1.79 6 4v2H4c-1.11 0-2 .89-2 2v8c0 1.11.89 2 2 2h8c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-2zm-4-4c1.18 0 2 1.35 2 2v2H4V4c0-.65.47-1.16 1-1.25V2c0-1.1.9-2 2-2zM8 12c-1.54 0-2.79-1.46-2.97-3.33L5 8V6h6v2l-.03.67C10.79 10.54 9.54 12 8 12zm4-3.33C10.79 10.54 9.54 12 8 12s-2.79-1.46-3.03-3.33L5 8h6l.03.67z"></path>
+            </svg>
+            @Html.TextBoxFor(m => m.Direccion, new { @class = "field-auth", id = "txtdireccion", @placeholder = "Ingrese su dirección", value = ViewData["Direccion"] })
+        </div>
+        <!-- Div de regulaciones de contraseña -->
+        <div class="password-regulations">
+            <div class="regulation-check">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="checkmark" viewBox="0 0 16 16" id="idCheckMarkEIGHT" style="color: green">
+                    <path d="M11.646 3.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L11.5 4.707 8.354 7.854a.5.5 0 0 1-.708-.708l3-3z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="crossmark" viewBox="0 0 16 16" id="idCrossMarkEIGHT" style="color: red">
+                    <path fill-rule="evenodd" d="M1.646 0.646a.5.5 0 0 1 .708 0L8 6.293l5.646-5.647a.5.5 0 0 1 .708.708L8.707 7l5.647 5.646a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708L7.293 7 .646 1.354a.5.5 0 0 1 0-.708z"></path>
+                </svg>
+                <span style="color:white">La contraseña debe tener al menos 8 caracteres</span>
+            </div>
+            <div class="regulation-check">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="checkmark" viewBox="0 0 16 16" id="idCheckMarkMINMAN" style="color: green">
+                    <path d="M11.646 3.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L11.5 4.707 8.354 7.854a.5.5 0 0 1-.708-.708l3-3z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="crossmark" viewBox="0 0 16 16" id="idCrossMarkMINMAN" style="color: red">
+                    <path fill-rule="evenodd" d="M1.646 0.646a.5.5 0 0 1 .708 0L8 6.293l5.646-5.647a.5.5 0 0 1 .708.708L8.707 7l5.647 5.646a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708L7.293 7 .646 1.354a.5.5 0 0 1 0-.708z"></path>
+                </svg>
+                <span style="color:white">La contraseña debe contener letras mayúsculas y minúsculas</span>
+            </div>
+            <div class="regulation-check">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="checkmark" viewBox="0 0 16 16" id="idCheckMarkESP" style="color: green">
+                    <path d="M11.646 3.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L11.5 4.707 8.354 7.854a.5.5 0 0 1-.708-.708l3-3z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="crossmark" viewBox="0 0 16 16" id="idCrossMarkESP" style="color: red">
+                    <path fill-rule="evenodd" d="M1.646 0.646a.5.5 0 0 1 .708 0L8 6.293l5.646-5.647a.5.5 0 0 1 .708.708L8.707 7l5.647 5.646a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708L7.293 7 .646 1.354a.5.5 0 0 1 0-.708z"></path>
+                </svg>
+                <span style="color:white">La contraseña debe contener al menos un carácter especial y al menos un número</span>
+            </div>
+        </div>
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                <path d="M8 11.498c-.276 0-.5-.224-.5-.5V8.678c0-.276.224-.5.5-.5s.5.224.5.5v2.32c0 .276-.224.5-.5.5zm.5-8c-3.033 0-5.5 2.467-5.5 5.5s2.467 5.5 5.5 5.5 5.5-2.467 5.5-5.5-2.467-5.5-5.5-5.5zm0 10c-2.485 0-4.5-2.015-4.5-4.5S6.015 4.5 8 4.5s4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5zm0-1c1.93 0 3.5-1.57 3.5-3.5S9.93 2.5 8 2.5 4.5 4.07 4.5 6s1.57 3.5 3.5 3.5z" style="fill: #fff;"></path>
+            </svg>
+            @Html.PasswordFor(m => m.Clave, new { @class = "field-auth", id = "txtclave", @placeholder = "Ingrese su contraseña" })
+        </div>
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                <path d="M8 11.498c-.276 0-.5-.224-.5-.5V8.678c0-.276.224-.5.5-.5s.5.224.5.5v2.32c0 .276-.224.5-.5.5zm.5-8c-3.033 0-5.5 2.467-5.5 5.5s2.467 5.5 5.5 5.5 5.5-2.467 5.5-5.5-2.467-5.5-5.5-5.5zm0 10c-2.485 0-4.5-2.015-4.5-4.5S6.015 4.5 8 4.5s4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5zm0-1c1.93 0 3.5-1.57 3.5-3.5S9.93 2.5 8 2.5 4.5 4.07 4.5 6s1.57 3.5 3.5 3.5z" style="fill: #fff;"></path>
+            </svg>
+            @Html.PasswordFor(m => m.ConfirmarClave, new { @class = "field-auth", id = "txtconfirmaclave", @placeholder = "Confirmar contraseña" })
+        </div>
+
+        @{
+            if (ViewBag.Error != null)
+            {
+                <div class="field-auth" style="background-color: #dc3545;">
+                    <div class="alert alert-danger" role="alert">
+                        @ViewBag.Error
+                    </div>
+                </div>
+            }
+        }
+
+        <div class="btn">
+            <button class="btnRegistrar-auth" type="submit">Crear cuenta</button>
+        </div>
+        <div class="card-footer text-center py-3">
+            <div class="small"><a style="color:aliceblue" href="@Url.Action("Index", "Acceso")">¿Ya tienes una cuenta? Iniciar Sesión</a></div>
+        </div>
+    </form>
+    <script src="../../Scripts/JsProyecto/passRegulations.js"></script>
+</body>
+</html>

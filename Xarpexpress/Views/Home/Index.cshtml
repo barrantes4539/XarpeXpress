@@ -1,0 +1,165 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../Content/Static/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <title>@ViewBag.Title - XarpeXpress</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<main>
+    <section class="main-home">
+
+        <img class="card-img-background" src="../../Images/backgroundXarpe2.jpg" alt="Images">
+
+    </section>
+
+    <!-- trending-products-section -->
+    <section class="trending-product" id="trending">
+        <div class="center-text">
+            <h2><span>Productos de la casa</span></h2>
+
+        </div>
+        <div class="products">
+            <div class="card">
+                <div class="card-header">
+                    <img class="card-img-top" src="../Images/Cuervo mix.png" alt="images">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Daiquiri de piña</h4>
+                    <p class="card-text">Si buscas refrescarte y mantenerte saludable, esta es la mejor opción.</p>
+                    <h5>₡2200</h5>
+                    <a href="#" class="card-link">Agregar al carrito<i class='bx bxs-chevrons-right'></i></a>
+
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <img class="card-img-top" src="../Images/aXarpe.png" alt="images">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Xarpe</h4>
+                    <p class="card-text">Jagger, cacique y frutas</p>
+                    <h5>₡3000</h5>
+                    <a href="#" class="card-link">Agregar al carrito<i class='bx bxs-chevrons-right'></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <img class="card-img-top" src="../Images/Cuervo mix.png" alt="images">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Fresa ardiente</h4>
+                    <p class="card-text">Cacique, fresa y extractos de fresa</p>
+                    <h5>₡3000</h5>
+                    <a href="#" class="card-link">Agregar al carrito<i class='bx bxs-chevrons-right'></i></a>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <div class="wrapper">
+        <div class="container-progressBar">
+            <div class="label one">Usuarios activos</div>
+            <div class="progress-bar">
+                <div class="progress fill-1">
+                    <div class="glow"></div>
+                </div>
+            </div>
+            <div class="percentage">0%</div>
+        </div>
+
+        <div class="container-progressBar">
+            <div class="label two">Tasa de abandono</div>
+            <div class="progress-bar">
+                <div class="progress fill-2">
+                    <div class="glow"></div>
+                </div>
+            </div>
+            <div class="percentage">0%</div>
+        </div>
+
+
+        <div class="container-progressBar">
+            <div class="label three">Porcentaje de permanencia</div>
+            <div class="progress-bar">
+                <div class="progress fill-3">
+                    <div class="glow"></div>
+                </div>
+            </div>
+            <div class="percentage">0%</div>
+        </div>
+
+    </div>
+
+    <!-- Client-review-section -->
+    <section class="client-reviews">
+        <div class="reviews">
+            <h3>Reseña</h3>
+            <img src="../Images/Elon Musk.jpg" alt="">
+            <p>
+                He sido cliente frecuente de XarpeXpress desde sus inicios y estoy seguro que con esta implementación
+                tecnológica la empresa crecerá mucho y seguirá ofreciendo sus grandiosos productos pero esta vez a gran escala.
+            </p>
+            <h2>Elon Musk</h2>
+            <p>Technoking de Tesla</p>
+        </div>
+    </section>
+
+    <!-- contact-section -->
+    <section class="contact">
+        <div class="contact-info">
+            <div class="first-info">
+                <img src="../Images/logo.png" alt="" style="width: 150px; height: auto;">
+                <p>30106 Guadalupe/Arenilla</p>
+                <p>+305 89676086</p>
+                <p id="contact-email">kevinbarrantes02@gmail.com</p>
+                <div class="social-icon">
+                    <a href=""><i class='bx bxl-facebook-circle'></i></a>
+                    <a href=""><i class='bx bxl-instagram-alt'></i></a>
+                </div>
+            </div>
+            <div class="second-info">
+                <h4>Support</h4>
+                <p>Contact us</p>
+                <p>About page</p>
+                <p>Products</p>
+                <p>Privacy</p>
+            </div>
+            <div class="third-info">
+                <h4>Tienda</h4>
+                <p>Cocteles con alcohol</p>
+                <p>Cocteles de frutas</p>
+                <p>Cocteles mixtos</p>
+                <p>Metodo de pago en línea</p>
+            </div>
+            <div class="fourth-info">
+                <h4>Compañía</h4>
+                <p>Acerca de</p>
+                <p>Blog</p>
+                <p>Login</p>
+            </div>
+            <div class="five">
+                <h4>Inicio</h4>
+                <p>Notificaciones por correo</p>
+                <p>Descuentos</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../Scripts/JsProyecto/intPercent.js"></script>
+</main>

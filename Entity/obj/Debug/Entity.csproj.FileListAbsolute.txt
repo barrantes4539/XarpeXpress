@@ -1,0 +1,6 @@
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Entity\bin\Debug\Entity.dll
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Entity\bin\Debug\Entity.pdb
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Entity\obj\Debug\Entity.csproj.AssemblyReference.cache
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Entity\obj\Debug\Entity.dll
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Entity\obj\Debug\Entity.pdb

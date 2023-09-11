@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+</head>
+<body>
+    <ol class="breadcrumb mb-4 mt-4">
+        <li class="breadcrumb-item active">Productos</li>
+    </ol>
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-users me-1"></i> Carrito
+        </div>
+        <div class="card-body">
+            <hr />
+            <table id="table-cart" class="display cell-border" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre del producto</th>
+                        <th>Precio</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <div class="cart-summary">
+        <h2>Resumen</h2>
+        <div class="summary-details">
+            <p>Subtotal: $10.00</p>
+            <p>Impuestos: $1.00</p>
+            <p>Total: $11.00</p>
+        </div>
+        <a class="checkout" href="@Url.Action("PasarelaPago", "Home")">Checkout</a>
+        <button class="clear">Vaciar Carrito</button>
+    </div>
+
+
+    @section scripts{
+        <script src="~/Scripts/jquery.dataTables.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+        <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+
+
+        <script>
+
+        var tabladata;
+        var filaSeleccionada;
+
+     
+
+        $(document).ready(function () {
+            tabladata = $('#table-cart').DataTable({
+                responsive: true,
+                ordering: false,
+                "ajax": {
+                    url: '@Url.Action("ListarCarritoPython", "Home")',
+                    type: "GET",
+                    dataType: "json"
+                },
+                "columns": [
+                    { "data": "IdCarrito" },
+                    { "data": "NombreProducto" },
+                    { "data": "Precio" },
+                    {
+                        "defaultContent": '<button type="button" class="btn btn-danger btn-sm"><i class="bx bx-trash"></i></button>',
+                        "orderable": false,
+                        "searchable": false,
+                        "width": "90px"
+                    }
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"
+                }
+            });
+
+           
+        });
+
+       
+
+
+        </script>
+    }
+
+</body>
+</html>

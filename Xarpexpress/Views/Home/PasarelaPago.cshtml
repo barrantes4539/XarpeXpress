@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "PasarelaPago";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="../../Content/Static/styles.css">
+</head>
+<div class="modal-pago">
+    <form class="form-pago">
+        <div class="credit-card-info--form">
+            <div class="input_container-pago">
+                <label for="password_field" class="input_label-pago">Nombre de tarjeta</label>
+                <input id="nombreTarjeta" class="input_field-pago" type="text" name="input-name" title="Inpit title"
+                       placeholder="Ingrese su nombre completo">
+            </div>
+            <div class="input_container-pago">
+                <label for="password_field" class="input_label-pago">Número de tarjeta</label>
+                <input id="numeroTarjeta" class="input_field-pago" type="number" name="input-name" title="Inpit title"
+                       placeholder="0000 0000 0000 0000">
+            </div>
+            <div class="input_container-pago">
+                <label for="password_field" class="input_label-pago">Expira / CVV</label>
+                <div class="split">
+                    <input id="expiraFecha" class="input_field-pago" type="text" name="input-name" title="Expiry Date"
+                           placeholder="01/23">
+                    <input id="cvv" class="input_field-pago" type="number" name="cvv" title="CVV"
+                           placeholder="CVV">
+                </div>
+            </div>
+        </div>
+        <button class="purchase--btn" id="pagarBtn">Pagar</button>
+
+    </form>
+</div>
+<div id="alert-container"></div>
+@*<script src="../../Scripts/JsProyecto/alertaPagoExitoso.js"></script>*@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Add click event handler for the "Pagar" button
+        $("#pagarBtn").click(function (e) {
+            e.preventDefault();
+
+            // Get input values from the form
+            var nombreTarjeta = $("#nombreTarjeta").val();
+            var numeroTarjeta = $("#numeroTarjeta").val();
+            var expiraFecha = $("#expiraFecha").val();
+            var cvv = $("#cvv").val();
+
+            // Validate input fields
+            if (!nombreTarjeta || !numeroTarjeta || !expiraFecha || !cvv) {
+                alert("Por favor, complete todos los campos.");
+                return;
+            }
+
+            // Create a data object to send in the AJAX request
+            var data = {
+                IdTarjeta: numeroTarjeta,
+                CVV: cvv,
+                FechaVencimiento: expiraFecha,
+            };
+
+            // Make the AJAX request to the server
+            $.ajax({
+                type: "POST",
+                url: "/Home/VerificarTarjetaPython", // Update the URL if needed
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (response) {
+                    // Handle the response from the server
+                    if (response.mensaje) {
+                        // Payment successful, show the success alert
+                        alert("¡Pago exitoso! " + response.mensaje);
+                    } else if (response.error) {
+                        // Payment failed, show the error alert
+                        alert("Error en el pago, intente de nuevo");
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    // Handle any AJAX errors
+                    alert("Error en el pago: " + textStatus);
+                },
+            });
+        });
+    });
+
+</script>
+
+

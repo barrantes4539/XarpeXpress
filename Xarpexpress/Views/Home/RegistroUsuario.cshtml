@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" type="text/css" href="../../Content/Static/auth.css">
+</head>
+<body>
+    <form class="auth-form">
+        <h2 id="heading">Registro de Usuario</h2>
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <text x="0" y="14" fill="white">N</text>
+            </svg>
+            <input placeholder="Nombres" class="input-field-auth" type="text">
+        </div>
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <text x="0" y="14" fill="white">A</text>
+            </svg>
+            <input placeholder="Apellidos" class="input-field-auth" type="text">
+        </div>
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <text x="0" y="14" fill="white">E</text>
+            </svg>
+            <input placeholder="Correo" class="input-field-auth" type="email">
+        </div>
+
+        <!-- Div de regulaciones de contraseña -->
+        <div class="password-regulations">
+            <div class="regulation-check">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="checkmark" viewBox="0 0 16 16" id="idCheckMarkEIGHT" style="color: green">
+                    <path d="M11.646 3.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L11.5 4.707 8.354 7.854a.5.5 0 0 1-.708-.708l3-3z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="crossmark" viewBox="0 0 16 16" id="idCrossMarkEIGHT" style="color: red">
+                    <path fill-rule="evenodd" d="M1.646 0.646a.5.5 0 0 1 .708 0L8 6.293l5.646-5.647a.5.5 0 0 1 .708.708L8.707 7l5.647 5.646a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708L7.293 7 .646 1.354a.5.5 0 0 1 0-.708z"></path>
+                </svg>
+                <span style="color:white">La contraseña debe tener al menos 8 caracteres</span>
+            </div>
+            <div class="regulation-check">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="checkmark" viewBox="0 0 16 16" id="idCheckMarkMINMAN" style="color: green">
+                    <path d="M11.646 3.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L11.5 4.707 8.354 7.854a.5.5 0 0 1-.708-.708l3-3z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="crossmark" viewBox="0 0 16 16" id="idCrossMarkMINMAN" style="color: red">
+                    <path fill-rule="evenodd" d="M1.646 0.646a.5.5 0 0 1 .708 0L8 6.293l5.646-5.647a.5.5 0 0 1 .708.708L8.707 7l5.647 5.646a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708L7.293 7 .646 1.354a.5.5 0 0 1 0-.708z"></path>
+                </svg>
+                <span style="color:white">La contraseña debe contener letras mayúsculas y minúsculas</span>
+            </div>
+            <div class="regulation-check">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="checkmark" viewBox="0 0 16 16" id="idCheckMarkESP" style="color: green">
+                    <path d="M11.646 3.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L11.5 4.707 8.354 7.854a.5.5 0 0 1-.708-.708l3-3z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="crossmark" viewBox="0 0 16 16" id="idCrossMarkESP" style="color: red">
+                    <path fill-rule="evenodd" d="M1.646 0.646a.5.5 0 0 1 .708 0L8 6.293l5.646-5.647a.5.5 0 0 1 .708.708L8.707 7l5.647 5.646a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708L7.293 7 .646 1.354a.5.5 0 0 1 0-.708z"></path>
+                </svg>
+                <span style="color:white">La contraseña debe contener al menos un carácter especial</span>
+            </div>
+        </div>
+        <div class="field-auth">
+            <svg class="input-icon-auth" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <text x="0" y="14" fill="white">C</text>
+            </svg>
+            <input placeholder="Clave" class="input-field-auth" type="password">
+        </div>
+        <div class="btn">
+            <button class="btnRegistrar-auth" type="submit">Registrarme</button>
+        </div>
+    </form>
+    <script src="../../Scripts/JsProyecto/passRegulations.js"></script>
+</body>
+</html>

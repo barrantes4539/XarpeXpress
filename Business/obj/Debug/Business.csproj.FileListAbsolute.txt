@@ -1,0 +1,11 @@
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Business\bin\Debug\Business.dll
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Business\bin\Debug\Business.pdb
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Business\bin\Debug\Data.dll
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Business\bin\Debug\Entity.dll
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Business\bin\Debug\Data.pdb
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Business\bin\Debug\Entity.pdb
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Business\obj\Debug\Business.csproj.AssemblyReference.cache
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Business\obj\Debug\Business.csproj.CoreCompileInputs.cache
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Business\obj\Debug\Business.csproj.CopyComplete
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Business\obj\Debug\Business.dll
+C:\Users\Hans Barrantes\source\repos\TIC2-2023\Programacion V\Proyecto_1\Business\obj\Debug\Business.pdb

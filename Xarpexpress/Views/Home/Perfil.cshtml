@@ -1,0 +1,586 @@
+﻿
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi Perfil</title>
+    <link rel="stylesheet" href="../../Content/Static/stylesPerfil.css">
+
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="profile">
+            <h2>Mi perfil</h2>
+            <ul>
+                <li><strong>Nombre:</strong> John Doe</li>
+                <li><strong>Dirección:</strong> <label id="direccionPerfil">123 Calle Principal, Ciudad</label></li>
+                <li><strong>Teléfono:</strong> (123) 456-7890</li>
+                <!-- Otros detalles de perfil -->
+            </ul>
+            <button id="btnEditarPerfil">Editar Direccion</button>
+            <a id="btnTipoCambio" href="@Url.Action("TipoCambio","Home")">Tipo de cambio</a>
+        </div>
+
+        <!-- Modal para Tipo de cambio -->
+        <!-- Modal para Tipo de cambio -->
+        <div id="modalTipoCambio" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" id="closeModalTipoCambio">&times;</span>
+                <h3>Tipo de cambio</h3>
+                <form id="tipoCambioForm">
+                    <label for="indicador">Indicador:</label>
+                    <input type="text" id="indicador" name="indicador" required>
+
+                    <label for="fechaInicio">Fecha de inicio:</label>
+                    <input type="text" id="fechaInicio" name="fechaInicio" required>
+
+                    <label for="fechaFinal">Fecha final:</label>
+                    <input type="text" id="fechaFinal" name="fechaFinal" required>
+
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+
+                    <label for="correo">Correo:</label>
+                    <input type="email" id="correo" name="correo" required>
+
+                    <button type="button" id="btnObtenerTipoCambio">Obtener Tipo de Cambio</button>
+                </form>
+
+                <div id="resultadoTipoCambioModal"></div>
+            </div>
+        </div>
+
+
+
+        <table id="direccionesTable" style="display: none">
+            <tr>
+                <th>Provincia</th>
+            </tr>
+            <tr class="expandable" id="San-Jose">
+                <td>
+                    <label>San Jose</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                </td>
+            </tr>
+            <tr class="expand-content">
+                <td colspan="1">
+                    <table>
+                        <tr>
+                            <th>Cantón</th>
+                        </tr>
+                        <tr class="expandable" id="Desamparados">
+                            <td>
+                                <label>Desamparados</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                            </td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Centro</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>San Miguel</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Frailes</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="expandable" id="canton-2-san-jose">
+                            <td>
+                                <label>Curridabat</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                            </td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Montes de Oca</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Granadilla</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="expandable" id="alajuela">
+                <td>
+                    <label>Alajuela</label> <span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                </td>
+            </tr>
+            <tr class="expand-content">
+                <td colspan="1">
+                    <table>
+                        <tr>
+                            <th>Cantón</th>
+                        </tr>
+                        <tr class="expandable" id="canton-1-alajuela">
+                            <td>
+                                <label>Centro</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                            </td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>San Antonio</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Carrizal</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="expandable" id="cartago">
+                <td>
+                    <label>Cartago</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                </td>
+            </tr>
+            <tr class="expand-content">
+                <td colspan="1">
+                    <table>
+                        <tr>
+                            <th>Cantón</th>
+                        </tr>
+                        <tr class="expandable" id="SanNicolas">
+                            <td><label>Paraiso</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button></td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Orosi</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Cachi</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Santiago</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="expandable" id="LaUnion">
+                            <td><label>La Union</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button></td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>San Diego</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Dulce Nombre</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>San Rafael</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="expandable" id="heredia">
+                <td>
+                    <label>Heredia</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                </td>
+            </tr>
+            <tr class="expand-content">
+                <td colspan="1">
+                    <table>
+                        <tr>
+                            <th>Cantón</th>
+                        </tr>
+                        <tr class="expandable" id="HerediaCentro">
+                            <td>
+                                <label>Heredia Centro</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                            </td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Heredia Distrito 1</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Heredia Distrito 2</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="expandable" id="Barva">
+                            <td>
+                                <label>Barva</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                            </td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Barva Distrito 1</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Barva Distrito 2</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="expandable" id="guanacaste">
+                <td>
+                    <label>Guanacaste</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                </td>
+            </tr>
+            <tr class="expand-content">
+                <td colspan="1">
+                    <table>
+                        <tr>
+                            <th>Cantón</th>
+                        </tr>
+                        <tr class="expandable" id="Liberia">
+                            <td>
+                                <label>Liberia</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                            </td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Liberia Distrito 1</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Liberia Distrito 2</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="expandable" id="Nicoya">
+                            <td>
+                                <label>Nicoya</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                            </td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Nicoya Distrito 1</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Nicoya Distrito 2</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="expandable" id="puntarenas">
+                <td>
+                    <label>Puntarenas</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                </td>
+            </tr>
+            <tr class="expand-content">
+                <td colspan="1">
+                    <table>
+                        <tr>
+                            <th>Cantón</th>
+                        </tr>
+                        <tr class="expandable" id="PuntarenasCentro">
+                            <td>
+                                <label>Puntarenas Centro</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                            </td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Puntarenas Distrito 1</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Puntarenas Distrito 2</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="expandable" id="Esparza">
+                            <td>
+                                <label>Esparza</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                            </td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Esparza Distrito 1</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Esparza Distrito 2</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="expandable" id="limon">
+                <td>
+                    <label>Limón</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                </td>
+            </tr>
+            <tr class="expand-content">
+                <td colspan="1">
+                    <table>
+                        <tr>
+                            <th>Cantón</th>
+                        </tr>
+                        <tr class="expandable" id="LimónCentro">
+                            <td>
+                                <label>Limón Centro</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                            </td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Limón Distrito 1</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Limón Distrito 2</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="expandable" id="Siquirres">
+                            <td>
+                                <label>Siquirres</label><span class="expand-icon">&#9660;</span><button class="expand-button">Seleccionar</button>
+                            </td>
+                        </tr>
+                        <tr class="expand-content">
+                            <td colspan="1">
+                                <table>
+                                    <tr>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Siquirres Distrito 1</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Siquirres Distrito 2</label><button class="expand-button">Seleccionar</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+
+
+
+
+
+        <!--<div class="order-history">
+        <h2>Historial de Pedidos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Número de Pedido</th>
+                    <th>Fecha</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>2023-05-20</td>
+                    <td>$50.00</td>
+                    <td>Entregado</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>2023-05-15</td>
+                    <td>$75.00</td>
+                    <td>En Proceso</td>
+                </tr>-->
+        <!-- Otros pedidos -->
+        <!--</tbody>
+            </table>
+        </div>-->
+    </div>
+    <script>
+            // Obtener referencias a los elementos relevantes
+            const editarPerfilButton = document.getElementById('btnEditarPerfil');
+            const direccionesTable = document.getElementById('direccionesTable');
+            const direccionPerfil = document.getElementById('direccionPerfil');
+
+            // Agregar un evento click al botón "Editar Perfil"
+            editarPerfilButton.addEventListener('click', () => {
+                direccionesTable.style.display = 'table'; // Mostrar la tabla de direcciones
+            });
+
+            // Obtener todos los botones de selección
+            const seleccionarButtons = document.getElementsByClassName('expand-button');
+            // Agregar eventos click a los botones de selección
+            for (let i = 0; i < seleccionarButtons.length; i++) {
+                const seleccionarButton = seleccionarButtons[i];
+
+                seleccionarButton.addEventListener('click', () => {
+                    const direccionSeleccionada = seleccionarButton.parentNode.querySelector('label').textContent.trim();
+                    direccionPerfil.textContent = direccionSeleccionada; // Actualizar el campo de dirección del perfil
+                    direccionesTable.style.display = 'none'; // Ocultar la tabla de direcciones
+                });
+            }
+
+            // Obtener todas las filas expandibles de la tabla
+            const expandableRows = document.querySelectorAll('.expandable');
+
+            // Agregar un evento de clic a cada fila expandible
+            expandableRows.forEach(row => {
+                // Obtener el contenido de la fila
+                const rowContent = row.querySelector('label');
+                // Obtener el botón de selección de la fila
+                const selectButton = row.querySelector('.expand-button');
+                // Obtener el icono de desplegar de la fila
+                const expandIcon = row.querySelector('.expand-icon');
+
+                // Agregar un evento de clic al botón de selección de la fila
+                selectButton.addEventListener('click', (event) => {
+                    // Evitar que el evento de clic se propague al icono de desplegar
+                    event.stopPropagation();
+
+                    // Obtener la provincia, cantón o distrito seleccionado
+                    const selectedElement = rowContent.textContent.trim();
+
+                    // Imprimir el elemento seleccionado en la consola (puedes realizar otras acciones con el elemento seleccionado)
+                    console.log('Elemento seleccionado:', selectedElement);
+                });
+
+                // Agregar un evento de clic al contenido de la fila
+                rowContent.addEventListener('click', () => {
+                    // Obtener el siguiente elemento hermano de la fila actual
+                    const expandContent = row.nextElementSibling;
+
+                    // Alternar la clase "expanded" en la fila actual y en el contenido expandible
+                    row.classList.toggle('expanded');
+                    expandContent.classList.toggle('expanded');
+                });
+            });
+
+
+        </script>
+</body>
+</html>
+
+

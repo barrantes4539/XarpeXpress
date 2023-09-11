@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "TipoCambio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tipo Cambio</title>
+    <link rel="stylesheet" href="../../Content/Static/styleTipoCambio.css">
+
+</head>
+
+
+<body>
+    <div class="container">
+        <h1>Tipo de Cambio</h1>
+        <form form id="tipoCambioForm" action="@Url.Action("TipoCambio", "Home")" method="post">
+            <label for="indicador">Indicador:</label>
+            <input type="text" id="indicador" name="indicador" required>
+
+            <label for="fechaInicio">Fecha de inicio:</label>
+            <input type="text" id="fechaInicio" name="fechaInicio" required>
+
+            <label for="fechaFinal">Fecha final:</label>
+            <input type="text" id="fechaFinal" name="fechaFinal" required>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="token">Token:</label>
+            <input type="text" id="token" name="token" required>
+
+            <button type="button" class="btn-calculate" id="btnObtenerTipoCambio" style="background-color: #1e1e1e">
+                Calcular Tipo de Cambio <i class="fas fa-calculator"></i>
+            </button>
+        </form>
+
+        <div class="result-container" style="display: none;" id="resultadoTipoCambioModal">
+            <div class="result-label">Indicador:</div>
+            <div class="result-value" id="indicadorResultado"></div>
+
+            <div class="result-label">Fecha de consulta:</div>
+            <div class="result-value" id="fechaConsultaResultado"></div>
+
+            <div class="result-label">Valor Tipo de Cambio:</div>
+            <div class="result-value" id="valorTipoCambioResultado"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $("#btnObtenerTipoCambio").on("click", function () {
+            var formData = $("#tipoCambioForm").serialize();
+            $.ajax({
+                url: '@Url.Action("TipoCambioGet", "Home")', // Usamos el nuevo método TipoCambioGet
+                type: 'GET', // Cambiamos el tipo de solicitud a GET
+                data: formData,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data)
+                    var tipoCambio = data[0]; // Accedemos al primer objeto en el arreglo data
+                    $("#indicadorResultado").text(tipoCambio.COD_INDICADORINTERNO);
+
+                    // La propiedad DES_FECHA está en formato de tiempo UNIX, convertir a fecha legible
+                    var fechaConsulta = new Date(parseInt(tipoCambio.DES_FECHA.substr(6)));
+                    $("#fechaConsultaResultado").text(fechaConsulta.toISOString().slice(0, 19).replace("T", " "));
+
+                    $("#valorTipoCambioResultado").text(tipoCambio.NUM_VALOR);
+
+                    $("#resultadoTipoCambioModal").show();
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.error("Error al obtener el tipo de cambio:", textStatus, errorThrown);
+                }
+            });
+        });
+    });
+    </script>
+
+
+
+</body>
+</html>
+

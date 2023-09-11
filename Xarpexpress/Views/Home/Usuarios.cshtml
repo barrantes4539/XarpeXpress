@@ -1,0 +1,254 @@
+﻿
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Resumen</a></li>
+    <li class="breadcrumb-item active">Usuarios</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista de Usuarios
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" onclick="ModalEditUser(null)">Crear Nuevo</button>
+            </div>
+        </div>
+        <hr />
+        <table id="table-users" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Direccion</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="frmEditUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <input id="txtEditId" type="text" value="1" />
+
+                <div class="row g-2">
+                    <div class="col-sm-6">
+                        <label for="txtEditNombres" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="txtEditNombres" autocomplete="off">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtEditApellidos" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="txtEditApellidos" autocomplete="off">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtEditCorreo" class="form-label">Correo</label>
+                        <input type="text" class="form-control" id="txtEditCorreo" autocomplete="off">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtEditDireccion" class="form-label">Direccion</label>
+                        <input type="text" class="form-control" id="txtEditDireccion" autocomplete="off">
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <label for="cboActivo" class="form-label">Activo</label>
+                        <select class="form-select" id="cboActivo">
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
+                        </select>
+
+                    </div>
+
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div id="mensajeError" class="alert alert-danger" role="alert">
+                            Ah ocurrido un error, intenta de nuevo!
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+
+
+    <script>
+
+        var tabladata;
+        var filaSeleccionada;
+
+        
+        function ModalEditUser(json) {
+
+            $("#txtEditId").val(0);
+            $("#txtEditNombres").val("");
+            $("#txtEditApellidos").val("");
+            $("#txtEditCorreo").val("");
+            $("#txtEditDireccion").val("");
+            $("#cboActivo").val(1);
+            $("#mensajeError").hide();
+
+
+
+
+
+            if (json != null) {
+
+                $("#txtEditId").val(json.IdUsuario);
+                $("#txtEditNombres").val(json.Nombres);
+                $("#txtEditApellidos").val(json.Apellidos);
+                $("#txtEditCorreo").val(json.Correo);
+                $("#txtEditDireccion").val(json.Direccion);
+                $("#cboActivo").val(json.Activo == true ? 1 : 0);
+            }
+            $("#frmEditUser").modal("show");
+        }
+        
+
+        $(document).ready(function () {
+            tabladata = $('#table-users').DataTable({
+                responsive: true,
+                ordering: false,
+                "ajax": {
+                    url: '@Url.Action("ListarUsuarios", "Home")',
+                    type: "GET",
+                    dataType: "json"
+                },
+                "columns": [
+                    { "data": "Nombres" },
+                    { "data": "Apellidos" },
+                    { "data": "Correo" },
+                    { "data": "Direccion" },
+                    {
+                        "data": "Activo", "render": function (valor) {
+                            if (valor) {
+                                return '<span class="badge bg-success">Si</span>'
+                            } else {
+                                return '<span class="badge bg-danger">No</span>'
+                            }
+                        }
+                    },
+                    {
+                        "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="bx bx-edit-alt"></i></button>' +
+                            '<button type="button" class="btn btn-danger btn-sm"><i class="bx bx-trash"></i></button>',
+                        "orderable": false,
+                        "searchable": false,
+                        "width": "90px"
+                    }
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"
+                }
+            });
+       
+            $("#table-users tbody").on("click", '.btn-editar', function () {
+
+                filaSeleccionada = $(this).closest("tr");
+
+                var datosUsuario = tabladata.row(filaSeleccionada).data();
+
+                console.log(datosUsuario)
+
+                ModalEditUser(datosUsuario)
+            })
+        });
+
+
+        function Guardar() {
+
+            var Usuario = {
+                IdUsuario: $("#txtEditId").val(),
+                Nombres: $("#txtEditNombres").val(),
+                Apellidos: $("#txtEditApellidos").val(),
+                Direccion: $("#txtEditDireccion").val(),
+                Correo: $("#txtEditCorreo").val(),
+                Activo: $("#cboActivo").val() == 1 ? true : false
+            }
+
+            jQuery.ajax({
+                url: '@Url.Action("GuardarUsuario", "Home")',
+                type: 'POST',
+                data: JSON.stringify({ objeto: Usuario }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    debugger;
+
+                    //USUARIO NUEVO
+                    if (Usuario.IdUsuario == 0) {
+
+                        if (data.resultado != 0) {
+                            Usuario.IdUsuario = data.resultado;
+                            tabladata.row.add(Usuario).draw(false);
+                            $("#frmEditUser").modal("hide");
+                        } else {
+                            $('#mensajeError').text(data.mensaje);
+                            $('#mensajeError').show();
+
+                        }   
+                    //USUARIO EDITAR
+                    } else {
+                        if (data.resultado) {
+                            tabladata.row(filaSeleccionada).data(Usuario).draw(false)
+                            filaSeleccionada = null;
+                            $("#frmEditUser").modal("hide");
+
+                        } else {
+                            $('#mensajeError').text(data.mensaje);
+                            $('#mensajeError').show();
+
+                        } 
+                        
+                    }
+
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+
+                }
+
+            });
+
+            
+        }
+    </script>
+}
+
